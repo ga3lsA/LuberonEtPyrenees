@@ -174,7 +174,7 @@ p{ margin: 0 0 1em; }
 /* --- Route signature (ligne pointillée Gordes <-> Marquixanes) --- */
 .route{
   display:flex; align-items:center; justify-content:center;
-  gap: .9em; margin: 0 auto 2.4em;
+  gap: .9em; margin: 0 auto;
   color: var(--ink-600);
   font-size: .82rem;
   letter-spacing:.06em;
@@ -186,17 +186,13 @@ p{ margin: 0 0 1em; }
 }
 .route .pin.ocre{ background: var(--ocre); }
 .route svg{ width: 140px; height: 10px; }
+.route-strip{ padding: 1.6rem 0 .2rem; }
+@media (max-width: 640px){
+  .route-strip .route{ flex-wrap:wrap; row-gap:.5em; }
+  .route-strip .route svg{ display:none; }
+}
 
-/* --- Hero home (diptyque) --- */
-.hero-home{ padding: 3.2em 0 1em; text-align:center; }
-.hero-home h1{
-  font-size: clamp(2.1rem, 4.2vw, 3.4rem);
-  max-width: 16ch; margin-inline:auto;
-}
-.hero-home .lead{
-  max-width: 52ch; margin: 1.1em auto 0;
-  color: var(--ink-600); font-size: 1.05rem;
-}
+/* --- Diptyque (accueil) --- */
 .diptych{
   display:grid; grid-template-columns: 1fr 1fr; gap: 1.4rem;
   margin-top: 3rem;
