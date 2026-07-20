@@ -36,6 +36,8 @@ index.html          page d'accueil (les deux maisons)
 gordes.html          page maison — Gordes
 marquixanes.html      page maison — Marquixanes
 contact.html          page de contact
+pages/manuel-gordes.html        guide pratique Gordes (non listé dans le menu)
+pages/manuel-marquixanes.html   guide pratique Marquixanes (non listé dans le menu)
 css/style.css         design du site
 js/config.js           TOUT le contenu variable : textes, photos, tarifs, disponibilités
 js/main.js             menu mobile, galerie photo, lightbox
@@ -122,7 +124,21 @@ Pour vérifier ou déboguer une synchronisation : onglet **Actions** → cliquez
 sur une exécution → vous verrez le détail (nombre de périodes trouvées par
 maison, erreurs éventuelles).
 
-## 5. Mettre le site en ligne
+## 5. Pages "manuel de la maison" (non listées dans le menu)
+
+Deux pages pratiques existent, comme sur l'ancien site, mais ne sont
+accessibles que par lien direct — elles n'apparaissent dans aucun menu :
+
+- `pages/manuel-gordes.html`
+- `pages/manuel-marquixanes.html`
+
+Elles reprennent les consignes de sécurité et le mode d'emploi de chaque
+maison (électricité, chauffage, TV, coffre-fort...). Envoyez le lien
+correspondant à vos voyageurs avant leur arrivée (par exemple dans l'e-mail
+de confirmation). Une fois le site en ligne, les adresses seront de la forme
+`https://votre-domaine/pages/manuel-gordes.html`.
+
+## 6. Mettre le site en ligne
 
 Ce site est 100 % statique : il fonctionne sur n'importe quel hébergeur qui
 sert des fichiers HTML (OVH, Netlify, Vercel, GitHub Pages, etc.). Il suffit

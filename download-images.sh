@@ -38,6 +38,17 @@ for f in img-3587-grande img-4526-grande img-4536-grande img-4560-grande \
   fetch "$BASE/medias/album/${f}.jpeg" "images/gordes/${f}.jpeg"
 done
 
+# --- Gordes : manuel de la maison (page pratique, non listée dans le menu) ---
+mkdir -p images/gordes/manuel
+for f in img-9145-moyenne img-9144-moyenne img-9146-moyenne img-9147-moyenne \
+         img-9160 img-9161 img-9162 img-9149-moyenne img-9148-moyenne \
+         img-9150-moyenne img-9154-moyenne img-9152-moyenne img-9151-moyenne; do
+  fetch "$BASE/medias/images/${f}.jpeg" "images/gordes/manuel/${f}.jpeg"
+done
+fetch "$BASE/medias/images/img-8987-grande.jpeg" "images/gordes/manuel/img-8987-grande.jpeg"
+fetch "$BASE/medias/images/img-8988-grande.jpeg" "images/gordes/manuel/img-8988-grande.jpeg"
+fetch "$BASE/medias/images/img-4536.jpg" "images/gordes/manuel/img-4536.jpg"
+
 # --- Marquixanes : photo de couverture ---
 fetch "$BASE/medias/images/img-7942.jpeg" "images/marquixanes/img-7942.jpeg"
 
@@ -49,6 +60,24 @@ for f in img-6594-grande img-6771-grande img-5424-grande img-5427-grande \
          img-8578-grande img-8577-grande img-8602-grande img-8936-grande; do
   fetch "$BASE/medias/album/${f}.jpeg" "images/marquixanes/${f}.jpeg"
 done
+
+# --- Marquixanes : manuel de la maison (page pratique, non listée dans le menu) ---
+mkdir -p images/marquixanes/manuel
+fetch "$BASE/medias/images/img-8602.jpeg" "images/marquixanes/manuel/img-8602.jpeg"
+fetch "$BASE/medias/images/img-4505.jpg" "images/marquixanes/manuel/img-4505.jpg"
+fetch "$BASE/medias/images/capture-d-e-cran-2025-11-26-a-16.54.22.png" "images/marquixanes/manuel/capture-decran-serrure.png"
+fetch "$BASE/medias/images/img-8918.jpeg" "images/marquixanes/manuel/img-8918.jpeg"
+fetch "$BASE/medias/images/img-8919.jpeg" "images/marquixanes/manuel/img-8919.jpeg"
+fetch "$BASE/medias/images/img-8922.jpeg" "images/marquixanes/manuel/img-8922.jpeg"
+fetch "$BASE/medias/images/img-8923.jpeg" "images/marquixanes/manuel/img-8923.jpeg"
+fetch "$BASE/medias/images/img-8920.jpeg" "images/marquixanes/manuel/img-8920.jpeg"
+fetch "$BASE/medias/images/img-8930.jpeg" "images/marquixanes/manuel/img-8930.jpeg"
+fetch "$BASE/medias/images/e3510722-ec49-4818-9eed-eb67b62f3523.png" "images/marquixanes/manuel/e3510722.png"
+fetch "$BASE/medias/images/img-6595.jpg" "images/marquixanes/manuel/img-6595.jpg"
+fetch "$BASE/medias/images/img-330.jpg" "images/marquixanes/manuel/img-330.jpg"
+fetch "$BASE/medias/images/img-8942.jpeg" "images/marquixanes/manuel/img-8942.jpeg"
+fetch "$BASE/medias/images/img-8943.jpeg" "images/marquixanes/manuel/img-8943.jpeg"
+fetch "$BASE/medias/images/img-8935-grande.jpeg" "images/marquixanes/manuel/img-8935-grande.jpeg"
 
 echo ""
 echo "Terminé. Vérifiez ci-dessus qu'aucune ligne ÉCHEC n'apparaît."
