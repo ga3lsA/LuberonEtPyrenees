@@ -41,7 +41,10 @@ js/config.js           TOUT le contenu variable : textes, photos, tarifs, dispon
 js/main.js             menu mobile, galerie photo, lightbox
 js/house-page.js       remplit une page maison à partir de config.js
 js/booking.js          calendrier de disponibilité + calcul de prix + formulaire
-images/                photos (à peupler avec download-images.sh)
+images/                photos (à peupler avec download-images.sh) + logo
+data/availability.json disponibilités Airbnb/Booking, généré automatiquement
+scripts/sync-availability.mjs   script de synchronisation iCal
+.github/workflows/     Action GitHub qui lance la synchronisation chaque jour
 ```
 
 Pour ajouter/retirer une photo de galerie, ou changer un texte de présentation,
@@ -49,8 +52,10 @@ tout se passe dans `js/config.js` — vous n'avez pas besoin de toucher au HTML.
 
 ## 3. Le module de réservation, tel qu'il fonctionne aujourd'hui
 
-- Le calendrier grise les dates passées et les périodes listées dans
-  `unavailable`.
+- Le calendrier grise les dates passées, les périodes listées dans
+  `unavailable` (blocages saisis à la main), **et** les périodes déjà
+  réservées sur Airbnb ou Booking une fois la synchronisation automatique
+  activée (voir section 4 ci-dessous).
 - Le prix est recalculé automatiquement selon vos règles telles que décrites
   sur l'ancien site : en juillet-août, uniquement à la semaine du samedi au
   samedi (tarif fixe) ; le reste de l'année, au tarif à la nuit avec un
@@ -73,15 +78,51 @@ disponibilités à la main. Si vous voulez un jour passer à l'étape supérieur
   un service comme Formspree ou EmailJS s'intègre en remplaçant simplement la
   fonction `onSubmit` de `js/booking.js` par un appel à leur API — quelques
   lignes de JavaScript, aucune limite technique de mon côté.
-- **Synchronisation automatique du calendrier avec Airbnb/Booking (iCal)** :
-  possible en récupérant leurs flux iCal côté serveur (cela nécessite un petit
-  backend, ce site étant volontairement 100 % statique).
 - **Paiement en ligne (acompte à la réservation)** : nécessite Stripe ou
   équivalent, et donc un minimum de logique serveur.
 
 Dites-moi si l'un de ces points vous intéresse, je peux le construire.
 
-## 4. Mettre le site en ligne
+## 4. Synchronisation automatique avec Airbnb et Booking
+
+Le calendrier de réservation peut se mettre à jour tout seul chaque jour à
+partir de vos calendriers Airbnb et Booking, grâce à une "Action" GitHub
+(gratuite) qui tourne en coulisses. Rien à installer sur votre ordinateur.
+
+**Important : ne mettez jamais les liens iCal directement dans les fichiers du
+site.** Ce sont des liens "secrets" — toute personne qui les obtient peut
+voir vos réservations. Comme le dépôt GitHub est public, on les enregistre
+plutôt dans un espace protégé du dépôt, prévu pour ça :
+
+1. Sur GitHub, ouvrez votre dépôt (`luberon-et-pyrenees`)
+2. **Settings** → dans le menu de gauche, **Secrets and variables** → **Actions**
+3. Cliquez **"New repository secret"**, et créez ces 4 secrets un par un
+   (nom exact à gauche, lien iCal correspondant à droite) :
+   - `AIRBNB_GORDES_ICAL`
+   - `BOOKING_GORDES_ICAL`
+   - `AIRBNB_MARQUIXANES_ICAL`
+   - `BOOKING_MARQUIXANES_ICAL`
+4. Toujours dans **Settings**, allez dans **Actions** → **General**, section
+   "Workflow permissions" : cochez **"Read and write permissions"**, puis
+   **Save**. (Nécessaire pour que la synchronisation puisse enregistrer les
+   nouvelles dates dans le dépôt.)
+5. Onglet **Actions** en haut du dépôt → cliquez sur **"Synchroniser les
+   disponibilités"** dans la liste de gauche → bouton **"Run workflow"** →
+   **"Run workflow"**, pour lancer une première synchronisation tout de suite
+   (sinon elle attendra le lendemain 5h).
+
+Une fois lancée, vous verrez sur chaque page maison, sous le calendrier, la
+mention "Synchronisé avec Airbnb et Booking — dernière mise à jour le...".
+Ensuite, tout est automatique : la synchronisation tourne chaque jour, et les
+dates déjà réservées sur Airbnb ou Booking apparaissent grisées sur le site,
+en plus de celles que vous ajoutez à la main dans `unavailable`
+(`js/config.js`) pour vos propres blocages (travaux, usage personnel...).
+
+Pour vérifier ou déboguer une synchronisation : onglet **Actions** → cliquez
+sur une exécution → vous verrez le détail (nombre de périodes trouvées par
+maison, erreurs éventuelles).
+
+## 5. Mettre le site en ligne
 
 Ce site est 100 % statique : il fonctionne sur n'importe quel hébergeur qui
 sert des fichiers HTML (OVH, Netlify, Vercel, GitHub Pages, etc.). Il suffit

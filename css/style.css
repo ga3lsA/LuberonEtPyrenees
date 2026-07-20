@@ -16,16 +16,19 @@
   /* --- Accent Gordes (Provence) --- */
   --terracotta:      #B4593A;
   --terracotta-dark:  #8C4029;
-  --sage:            #7C8363;
 
   /* --- Accent Marquixanes (Catalogne) --- */
   --ocre:      #C08A2E;
   --ocre-dark: #96691E;
   --slate:     #47586A;
 
-  /* --- Accent par défaut (site) --- */
-  --accent: var(--terracotta);
-  --accent-dark: var(--terracotta-dark);
+  /* --- Sauge, couleur de la charte du logo (badge Luberon & Pyrénées) --- */
+  --sage:      #5C6549;
+  --sage-dark: #40452F;
+
+  /* --- Accent par défaut (site, pages transverses) --- */
+  --accent: var(--sage);
+  --accent-dark: var(--sage-dark);
 
   --radius-s: 4px;
   --radius-m: 10px;
@@ -38,6 +41,10 @@
   --font-body: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
+[data-theme="gordes"]{
+  --accent: var(--terracotta);
+  --accent-dark: var(--terracotta-dark);
+}
 [data-theme="marquixanes"]{
   --accent: var(--ocre);
   --accent-dark: var(--ocre-dark);
@@ -128,8 +135,10 @@ p{ margin: 0 0 1em; }
   font-family: var(--font-display);
   font-size: 1.15rem;
   font-weight: 600;
-  display:flex; flex-direction:column; line-height:1.15;
+  display:flex; align-items:center; gap:.7em; line-height:1.15;
 }
+.brand img{ width: 40px; height: 40px; object-fit:contain; flex-shrink:0; }
+.brand .brand-text{ display:flex; flex-direction:column; }
 .brand small{
   font-family: var(--font-body);
   font-size: .68rem;
@@ -378,6 +387,7 @@ p{ margin: 0 0 1em; }
 .calendar-grid .day.available:hover{ border-color: var(--accent); }
 .calendar-grid .day.selected{ background: var(--accent); color:#fff; font-weight:700; }
 .calendar-grid .day.in-range{ background: rgba(180,89,58,.35); }
+.sync-info{ font-size:.76rem; color: rgba(243,236,223,.5); margin-top:.6em; }
 .legend{ display:flex; gap: 1.2em; margin-top: 1em; font-size: .78rem; color: rgba(243,236,223,.65); flex-wrap:wrap; }
 .legend span{ display:inline-flex; align-items:center; gap:.4em; }
 .legend i{ width:10px; height:10px; border-radius:3px; display:inline-block; }
@@ -430,6 +440,9 @@ p{ margin: 0 0 1em; }
 .site-footer{ background: var(--ink-900); color: var(--stone-200); padding: 3.4em 0 2em; margin-top: 3em; }
 .footer-grid{ display:grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 2.4rem; }
 .footer-grid h5{ font-family: var(--font-body); font-size:.78rem; text-transform:uppercase; letter-spacing:.1em; color: rgba(243,236,223,.55); margin-bottom: 1em; }
+.footer-brand{ display:flex; align-items:center; gap:.7em; margin-bottom: 1em; }
+.footer-brand img{ width:34px; height:34px; object-fit:contain; filter: brightness(0) invert(1); opacity:.9; }
+.footer-brand span{ font-family: var(--font-display); font-size:1.05rem; color:#fff; }
 .footer-grid p, .footer-grid a{ color: rgba(243,236,223,.8); font-size:.9rem; }
 .footer-grid ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:.6em; }
 .footer-bottom{

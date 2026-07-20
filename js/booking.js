@@ -13,20 +13,44 @@ const MONTH_LABELS = [
   "Juillet","Août","Septembre","Octobre","Novembre","Décembre"
 ];
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   const root = document.querySelector("[data-booking]");
   if (!root) return;
   const houseKey = root.getAttribute("data-booking");
   const house = SITE_CONFIG.houses[houseKey];
   if (!house) return;
-  new BookingModule(root, house, houseKey);
+
+  const synced = await loadSyncedAvailability(houseKey);
+  // Les périodes synchronisées (Airbnb/Booking) s'ajoutent à celles saisies
+  // manuellement dans js/config.js (blocages personnels, travaux, etc.)
+  const mergedHouse = { ...house, unavailable: [...house.unavailable, ...synced.ranges] };
+
+  new BookingModule(root, mergedHouse, houseKey, synced.updatedAt);
 });
 
+// Charge data/availability.json, généré automatiquement par
+// .github/workflows/sync-availability.yml à partir des calendriers Airbnb et
+// Booking. Si le fichier n'existe pas encore ou n'est pas accessible (par
+// exemple en ouvrant le site en local avec un simple double-clic, sans
+// serveur), le calendrier fonctionne quand même avec les dates de
+// js/config.js uniquement.
+async function loadSyncedAvailability(houseKey) {
+  try {
+    const res = await fetch("data/availability.json", { cache: "no-store" });
+    if (!res.ok) throw new Error("not ok");
+    const data = await res.json();
+    return { ranges: data.houses?.[houseKey] || [], updatedAt: data.updatedAt || null };
+  } catch {
+    return { ranges: [], updatedAt: null };
+  }
+}
+
 class BookingModule {
-  constructor(root, house, houseKey) {
+  constructor(root, house, houseKey, syncedAt) {
     this.root = root;
     this.house = house;
     this.houseKey = houseKey;
+    this.syncedAt = syncedAt;
     this.today = stripTime(new Date());
     this.viewMonth = new Date(this.today.getFullYear(), this.today.getMonth(), 1);
     this.start = null;
@@ -43,7 +67,19 @@ class BookingModule {
 
     if (this.form) this.form.addEventListener("submit", e => this.onSubmit(e));
 
+    this.renderSyncInfo();
     this.render();
+  }
+
+  renderSyncInfo() {
+    const el = this.root.querySelector("[data-sync-info]");
+    if (!el) return;
+    if (this.syncedAt) {
+      const d = new Date(this.syncedAt);
+      el.textContent = `Synchronisé avec Airbnb et Booking — dernière mise à jour le ${d.toLocaleDateString("fr-FR")} à ${d.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" })}.`;
+    } else {
+      el.textContent = "Disponibilités saisies manuellement (synchronisation Airbnb/Booking pas encore activée).";
+    }
   }
 
   shiftMonth(delta) {
