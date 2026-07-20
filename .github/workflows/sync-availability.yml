@@ -1,0 +1,41 @@
+name: Synchroniser les disponibilités
+
+on:
+  schedule:
+    - cron: "0 5 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+
+      - name: Installer Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Récupérer les calendriers Airbnb & Booking
+        env:
+          AIRBNB_GORDES_ICAL: ${{ secrets.AIRBNB_GORDES_ICAL }}
+          BOOKING_GORDES_ICAL: ${{ secrets.BOOKING_GORDES_ICAL }}
+          AIRBNB_MARQUIXANES_ICAL: ${{ secrets.AIRBNB_MARQUIXANES_ICAL }}
+          BOOKING_MARQUIXANES_ICAL: ${{ secrets.BOOKING_MARQUIXANES_ICAL }}
+        run: node scripts/sync-availability.mjs
+
+      - name: Publier data/availability.json si modifié
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- data/availability.json; then
+            echo "Aucun changement de disponibilité."
+          else
+            git add data/availability.json
+            git commit -m "Synchronisation automatique des disponibilités"
+            git push
+          fi
