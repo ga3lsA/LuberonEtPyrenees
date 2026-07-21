@@ -98,12 +98,21 @@ plutôt dans un espace protégé du dépôt, prévu pour ça :
 
 1. Sur GitHub, ouvrez votre dépôt (`luberon-et-pyrenees`)
 2. **Settings** → dans le menu de gauche, **Secrets and variables** → **Actions**
-3. Cliquez **"New repository secret"**, et créez ces 4 secrets un par un
+3. Cliquez **"New repository secret"**, et créez ces 6 secrets un par un
    (nom exact à gauche, lien iCal correspondant à droite) :
    - `AIRBNB_GORDES_ICAL`
    - `BOOKING_GORDES_ICAL`
    - `AIRBNB_MARQUIXANES_ICAL`
    - `BOOKING_MARQUIXANES_ICAL`
+   - `GREENGO_MARQUIXANES_ICAL`
+   - `ABRITEL_MARQUIXANES_ICAL`
+
+   **Attention à ne pas coller deux fois le même lien par erreur** (par
+   exemple le lien Airbnb de Gordes dans le secret de Marquixanes) : c'est la
+   cause la plus fréquente d'un calendrier qui affiche les mauvaises dates.
+   Le script de synchronisation détecte ce cas et affiche un avertissement
+   dans les logs de l'Action si deux maisons se retrouvent avec exactement
+   les mêmes dates bloquées.
 4. Toujours dans **Settings**, allez dans **Actions** → **General**, section
    "Workflow permissions" : cochez **"Read and write permissions"**, puis
    **Save**. (Nécessaire pour que la synchronisation puisse enregistrer les
@@ -121,8 +130,11 @@ en plus de celles que vous ajoutez à la main dans `unavailable`
 (`js/config.js`) pour vos propres blocages (travaux, usage personnel...).
 
 Pour vérifier ou déboguer une synchronisation : onglet **Actions** → cliquez
-sur une exécution → vous verrez le détail (nombre de périodes trouvées par
-maison, erreurs éventuelles).
+sur une exécution → dépliez l'étape "Récupérer les calendriers..." : le
+détail s'affiche maison par maison, avec pour chaque source (Airbnb,
+Booking, GreenGo, Abritel) le nombre de caractères reçus, puis le nombre
+total de périodes bloquées et les premières dates. C'est le bon endroit pour
+vérifier que Gordes et Marquixanes n'affichent pas les mêmes dates.
 
 ## 5. Pages "manuel de la maison" (non listées dans le menu)
 
@@ -138,7 +150,48 @@ correspondant à vos voyageurs avant leur arrivée (par exemple dans l'e-mail
 de confirmation). Une fois le site en ligne, les adresses seront de la forme
 `https://votre-domaine/pages/manuel-gordes.html`.
 
-## 6. Mettre le site en ligne
+## 7. Référencement (SEO)
+
+J'ai posé les bases techniques du référencement :
+
+- Balises **titre** et **meta description** propres à chaque page
+- Balises **Open Graph** et **Twitter Card** (aperçu soigné quand un lien est
+  partagé sur WhatsApp, Facebook, etc.)
+- Données structurées **Schema.org** (`LodgingBusiness`) sur les pages Gordes
+  et Marquixanes, pour aider Google à afficher des informations enrichies
+  (prix, équipements)
+- `robots.txt` et `sitemap.xml`, pour que Google découvre et indexe les
+  bonnes pages (les deux pages "manuel" restent hors indexation, comme
+  prévu)
+
+**Une seule chose à faire avant mise en ligne : remplacer le nom de domaine
+placeholder.** J'ai utilisé partout `https://luberon-et-pyrenees.fr` en
+attendant de connaître votre vrai domaine. Une fois que vous savez lequel
+utiliser (domaine personnalisé ou adresse GitHub Pages du type
+`https://votre-compte.github.io/luberon-et-pyrenees`), remplacez cette valeur
+dans : `sitemap.xml`, `robots.txt`, et l'en-tête de `index.html`,
+`gordes.html`, `marquixanes.html`, `contact.html` (cherchez
+`luberon-et-pyrenees.fr`).
+
+**Point à connaître : une partie du texte (descriptions, équipements) est
+injectée par JavaScript** depuis `js/config.js`, plutôt qu'écrite en dur dans
+le HTML. Google sait généralement lire ce type de contenu, mais certains
+outils qui n'exécutent pas le JavaScript (certains robots d'aperçu,
+notamment) ne le verront pas. Les balises meta/Open Graph couvrent
+l'essentiel de ce risque. Si vous voulez que ce texte soit aussi écrit en
+dur dans le HTML pour un référencement optimal, dites-le-moi : c'est
+faisable, mais cela veut dire modifier le texte à deux endroits (HTML et
+config) si vous éditez à nouveau les descriptions plus tard.
+
+**Une fois en ligne**, pour que Google indexe rapidement :
+1. Créez un compte sur [Google Search Console](https://search.google.com/search-console)
+2. Ajoutez votre site (propriété "Préfixe d'URL")
+3. Vérifiez la propriété (Search Console propose plusieurs méthodes, la plus simple ici est d'ajouter un fichier de vérification ou une balise meta qu'il vous fournira)
+4. Une fois vérifié, section "Sitemaps" → soumettez `sitemap.xml`
+
+L'indexation prend en général de quelques jours à quelques semaines.
+
+## 8. Mettre le site en ligne
 
 Ce site est 100 % statique : il fonctionne sur n'importe quel hébergeur qui
 sert des fichiers HTML (OVH, Netlify, Vercel, GitHub Pages, etc.). Il suffit
