@@ -9,7 +9,7 @@
 const SITE_CONFIG = {
   // Adresse e-mail qui recevra les demandes de réservation (formulaire "mailto").
   // Remplacez par votre véritable adresse avant mise en ligne.
-  contactEmail: "contact@luberon-et-pyrenees.fr",
+  contactEmail: "gaelsanquer@hotmail.com",
   contactPhone: "+33 6 00 00 00 00",
 
   houses: {
