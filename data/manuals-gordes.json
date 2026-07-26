@@ -154,5 +154,19 @@
         "caption": "La buanderie"
       }
     ]
+  },
+  {
+    "title": "Clés boîte aux lettres et coffre ",
+    "paragraphs": [
+      "Si vous souhaitez vous faire envoyer du courrier, entrez cette adresse postale : Gaël Sanquer 5 domaine les Bastidons, 8 chemin des Mians 84220 Gordes. La clé de la boîte aux lettres est dans le tiroir du buffet.",
+      "Par sécurité en cas de problème ou de perte du code, une clef du coffre est disponible dans ce tiroir "
+    ],
+    "images": [
+      {
+        "src": "images/gordes/manuel/1785078921906-img-0651.jpeg",
+        "alt": "",
+        "caption": "Le tiroir du buffet"
+      }
+    ]
   }
 ]
