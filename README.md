@@ -38,13 +38,18 @@ marquixanes.html      page maison — Marquixanes
 contact.html          page de contact
 pages/manuel-gordes.html        guide pratique Gordes (non listé dans le menu)
 pages/manuel-marquixanes.html   guide pratique Marquixanes (non listé dans le menu)
+pages/admin-manuel.html         back office des pages manuel (non listé dans le menu)
 css/style.css         design du site
-js/config.js           TOUT le contenu variable : textes, photos, tarifs, disponibilités
+css/admin.css          design du back office
+js/config.js           contenu variable : textes, photos, tarifs, disponibilités
 js/main.js             menu mobile, galerie photo, lightbox
 js/house-page.js       remplit une page maison à partir de config.js
-js/manual-page.js      remplit une page "manuel de la maison" à partir de config.js
+js/manual-page.js      remplit une page "manuel de la maison" à partir de data/manuals-*.json
+js/admin-manuel.js     logique du back office (lecture/écriture via l'API GitHub)
 js/booking.js          calendrier de disponibilité + calcul de prix + formulaire
 images/                photos (à peupler avec download-images.sh) + logo
+data/manuals-gordes.json        sections de la page manuel Gordes
+data/manuals-marquixanes.json   sections de la page manuel Marquixanes
 data/availability.json disponibilités Airbnb/Booking, généré automatiquement
 scripts/sync-availability.mjs   script de synchronisation iCal
 .github/workflows/     Action GitHub qui lance la synchronisation chaque jour
@@ -153,19 +158,23 @@ de confirmation). Une fois le site en ligne, les adresses seront de la forme
 
 ### Ajouter, modifier ou réordonner une section
 
-Le contenu de ces deux pages n'est pas écrit en dur dans le HTML : il vient
-de `js/config.js`, propriété `manuals.gordes` et `manuals.marquixanes`. Ce
-sont des listes de sections, chacune de la forme :
+Le plus simple est d'utiliser le **back office** (section 6 ci-dessous),
+accessible depuis un téléphone, sans toucher au code.
 
-```js
+Pour les utilisateurs techniques qui préfèrent éditer directement : le
+contenu de ces deux pages n'est pas écrit en dur dans le HTML, il vient de
+`data/manuals-gordes.json` et `data/manuals-marquixanes.json` (chargés par
+`js/manual-page.js`). Ce sont des listes de sections, chacune de la forme :
+
+```json
 {
-  title: "Titre de la section",
-  paragraphs: [
+  "title": "Titre de la section",
+  "paragraphs": [
     "Premier paragraphe.",
     "Deuxième paragraphe, si besoin."
   ],
-  images: [
-    { src: "images/gordes/manuel/mon-fichier.jpg", alt: "Description de l'image", caption: "Légende affichée sous la photo" }
+  "images": [
+    { "src": "images/gordes/manuel/mon-fichier.jpg", "alt": "Description de l'image", "caption": "Légende affichée sous la photo" }
   ]
 }
 ```
@@ -178,10 +187,68 @@ sont des listes de sections, chacune de la forme :
   `{ ... }` correspondant à un autre endroit de la liste (couper/coller).
 - **Photos** : déposez les fichiers dans `images/gordes/manuel/` (ou
   `images/marquixanes/manuel/`), puis référencez-les dans `src` avec ce même
-  chemin, sans `../` devant (comme partout ailleurs dans `config.js`).
+  chemin, sans `../` devant.
 
 Aucune autre modification n'est nécessaire : `js/manual-page.js` génère le
-HTML de chaque section automatiquement à partir de cette liste.
+HTML de chaque section automatiquement à partir de ce fichier JSON.
+
+## 6. Back office (éditer les manuels depuis votre téléphone, sans code)
+
+Le site est 100 % statique (pas de serveur, pas de base de données), mais une
+page dédiée permet d'éditer le contenu des pages manuel directement depuis un
+navigateur — y compris sur téléphone — sans toucher à aucun fichier :
+
+**`pages/admin-manuel.html`**
+
+Comme les pages manuel, elle n'apparaît dans aucun menu ; gardez son adresse
+en favori ou ajoutez-la à l'écran d'accueil de votre téléphone (Safari :
+partager → « Sur l'écran d'accueil » ; Chrome Android : menu → « Ajouter à
+l'écran d'accueil »). Une fois le site en ligne, son adresse sera de la
+forme `https://votre-domaine/pages/admin-manuel.html`.
+
+### Créer votre jeton d'accès (une seule fois)
+
+Cette page enregistre vos modifications en écrivant directement dans le
+dépôt GitHub, à votre place. Pour l'y autoriser, il faut créer un jeton
+d'accès personnel, limité à ce seul dépôt :
+
+1. Sur github.com (ou l'appli GitHub), allez dans **Settings** de votre
+   compte → tout en bas, **Developer settings** → **Personal access tokens**
+   → **Fine-grained tokens** → **Generate new token**.
+2. Donnez-lui un nom (ex. « Back office manuels ») et une expiration (90
+   jours, par exemple — vous pourrez en régénérer un le moment venu).
+3. **Repository access** → « Only select repositories » → choisissez ce
+   dépôt.
+4. **Permissions** → **Repository permissions** → réglez **Contents** sur
+   « Read and write ». Laissez tout le reste sur « No access ».
+5. Validez et copiez le jeton (il commence par `github_pat_`) : GitHub ne
+   vous le remontrera plus après avoir quitté la page.
+6. Collez-le une fois dans le back office, cochez « Se souvenir de moi » : il
+   reste alors enregistré uniquement sur cet appareil (jamais envoyé ailleurs
+   qu'à GitHub) et vous n'aurez plus à le ressaisir.
+
+**Sécurité :** ce jeton ne donne accès qu'au contenu de ce dépôt (aucun
+autre de vos dépôts, aucun autre réglage de compte). Vous pouvez le
+révoquer ou en régénérer un nouveau à tout moment depuis la même page de
+réglages GitHub, sans que cela affecte le fonctionnement du site.
+
+### Utilisation
+
+1. Ouvrez `pages/admin-manuel.html`, collez votre jeton, connectez-vous.
+2. Choisissez la maison (Gordes ou Marquixanes).
+3. Pour chaque section : modifiez le titre, le texte (ajoutez/retirez des
+   paragraphes), les photos (ajoutez-en depuis votre pellicule ou l'appareil
+   photo, modifiez légende/description, ou retirez-en une).
+4. Utilisez les flèches ↑ / ↓ pour réordonner les sections, ou le bouton ×
+   pour en supprimer une, ou « + Ajouter une section » pour en créer une.
+5. Cliquez sur **Enregistrer les modifications**. Le site est mis à jour
+   automatiquement (une à deux minutes, le temps que GitHub Pages
+   redéploie).
+
+Comme aucune photo n'avait encore été mise en ligne dans le dépôt pour ces
+pages manuel, les sections existantes n'ont pour l'instant pas d'image :
+ajoutez-les directement depuis le back office, elles s'enregistreront au
+bon endroit (`images/gordes/manuel/` ou `images/marquixanes/manuel/`).
 
 ## 7. Référencement (SEO)
 

@@ -1,0 +1,158 @@
+[
+  {
+    "title": "Sécurité",
+    "paragraphs": [
+      "L'extincteur se trouve sous l'évier de la cuisine.<br>\nLe détecteur de fumée et de monoxyde de carbone est situé au-dessus de la porte d'entrée.<br>\nLa trousse de premiers secours se trouve dans le tiroir sous la vasque de la salle de bains."
+    ],
+    "images": [
+      {
+        "src": "images/gordes/manuel/img-9145-moyenne.jpeg",
+        "alt": "L'extincteur situé dans la cuisine sous l'évier",
+        "caption": "L'extincteur, sous l'évier de la cuisine"
+      },
+      {
+        "src": "images/gordes/manuel/img-9144-moyenne.jpeg",
+        "alt": "Détecteur de monoxyde de carbone",
+        "caption": "Détecteur de fumée / monoxyde"
+      },
+      {
+        "src": "images/gordes/manuel/img-9146-moyenne.jpeg",
+        "alt": "Trousse de premiers secours",
+        "caption": "Trousse de premiers secours"
+      }
+    ]
+  },
+  {
+    "title": "Électricité",
+    "paragraphs": [
+      "Il peut arriver, lorsque le chauffage est allumé en hiver, que le disjoncteur saute. En cas de coupure, allez au tableau électrique situé dans le petit placard derrière la porte d'entrée. Si le disjoncteur général est sur « Off », rallumez-le. S'il est toujours sur « On », la disjonction s'est faite sur le tableau principal du domaine, à l'extérieur de la maison.",
+      "Rendez-vous au Bastidon n°14, à quelques pas en descendant l'allée sur la droite. Vous trouverez un tableau électrique bleu : ouvrez la porte et réenclenchez le disjoncteur numéro 5."
+    ],
+    "images": [
+      {
+        "src": "images/gordes/manuel/img-9147-moyenne.jpeg",
+        "alt": "Le coffret électrique derrière la porte",
+        "caption": "Le coffret électrique, derrière la porte"
+      },
+      {
+        "src": "images/gordes/manuel/img-9160.jpeg",
+        "alt": "Le Bastidon N°14",
+        "caption": "Le Bastidon n°14"
+      },
+      {
+        "src": "images/gordes/manuel/img-9161.jpeg",
+        "alt": "Le boîtier électrique sur le mur",
+        "caption": "Le boîtier électrique, sur le mur"
+      },
+      {
+        "src": "images/gordes/manuel/img-9162.jpeg",
+        "alt": "Enclenchez le disjoncteur N°5",
+        "caption": "Réenclenchez le n°5 en cas de disjonction"
+      }
+    ]
+  },
+  {
+    "title": "Télévision et système son",
+    "paragraphs": [
+      "La télécommande Samsung gère à la fois la télé et la barre de son : choisissez TV ou BD pour allumer l'une ou l'autre.",
+      "Allumez la télé et choisissez HDMI1. Allumez la barre de son : le son sort par la barre de son après quelques secondes, qui doit afficher « D.IN ». Allumez la box Orange avec la télécommande Orange, et choisissez une chaîne TV, Netflix ou Amazon Prime.",
+      "Une clé Google Chromecast est disponible sur la télé (entrée HDMI 2) et permet de diffuser les contenus de vos téléphones ou tablettes. Connectez-vous au wifi de la maison pour caster sur « Chromecast Gordes »."
+    ],
+    "images": [
+      {
+        "src": "images/gordes/manuel/img-9149-moyenne.jpeg",
+        "alt": "Télécommandes",
+        "caption": "Les télécommandes"
+      }
+    ]
+  },
+  {
+    "title": "Utilisation du coffre-fort",
+    "paragraphs": [
+      "Un coffre est à votre disposition dans la maison. La porte doit être ouverte : appuyez sur le bouton rouge situé à l'arrière de la porte, vous entendrez 2 bips. Choisissez votre code, de 3 à 8 chiffres, en terminant par « E » ; vous entendrez de nouveau 2 bips. Fermez la porte en tournant la molette.",
+      "Pour l'ouvrir à nouveau, tapez votre code suivi de « E ». Les voyants verts s'allument : tournez la molette. En cas de problème ou d'oubli du code, une clé est disponible."
+    ],
+    "images": [
+      {
+        "src": "images/gordes/manuel/img-8987-grande.jpeg",
+        "alt": "Le clavier du coffre",
+        "caption": "Le clavier du coffre"
+      },
+      {
+        "src": "images/gordes/manuel/img-8988-grande.jpeg",
+        "alt": "Le bouton rouge du coffre",
+        "caption": "Le bouton rouge, à l'arrière de la porte"
+      }
+    ]
+  },
+  {
+    "title": "Plaque de cuisson",
+    "paragraphs": [
+      "Il est possible, de façon aléatoire, que la plaque de cuisson se mette en sécurité et se mette à biper de manière régulière. Pour la redémarrer, il suffit de l'éteindre et de la rallumer depuis le boîtier électrique situé derrière la porte d'entrée."
+    ],
+    "images": [
+      {
+        "src": "images/gordes/manuel/img-9148-moyenne.jpeg",
+        "alt": "Plaque de cuisson",
+        "caption": "La plaque de cuisson"
+      }
+    ]
+  },
+  {
+    "title": "Rallonges électriques et adaptateurs",
+    "paragraphs": [
+      "Ils sont disponibles dans le tiroir du meuble sous la télé."
+    ],
+    "images": [
+      {
+        "src": "images/gordes/manuel/img-9150-moyenne.jpeg",
+        "alt": "Rallonges électriques",
+        "caption": "Rallonges et adaptateurs"
+      }
+    ]
+  },
+  {
+    "title": "Chargeurs téléphone",
+    "paragraphs": [
+      "Les prises électriques des chambres sont équipées de prises USB-C et de chargeurs intégrés pour charger téléphones et tablettes."
+    ],
+    "images": [
+      {
+        "src": "images/gordes/manuel/img-9154-moyenne.jpeg",
+        "alt": "Prise électrique et USB-C",
+        "caption": "Prise avec USB-C intégré"
+      }
+    ]
+  },
+  {
+    "title": "Jeux",
+    "paragraphs": [
+      "Des jeux de cartes et de Uno, ainsi que des raquettes de ping-pong (la table se trouve au pool house, près de la piscine), sont rangés dans les tiroirs du meuble sous la télé."
+    ],
+    "images": [
+      {
+        "src": "images/gordes/manuel/img-9152-moyenne.jpeg",
+        "alt": "Jeux de société",
+        "caption": "Jeux de cartes et Uno"
+      },
+      {
+        "src": "images/gordes/manuel/img-9151-moyenne.jpeg",
+        "alt": "Raquettes de ping-pong",
+        "caption": "Raquettes de ping-pong"
+      }
+    ]
+  },
+  {
+    "title": "Buanderie",
+    "paragraphs": [
+      "Deux machines à laver sont disponibles dans la buanderie, au bas de l'allée. Prévoyez une pièce de 2&nbsp;€ pour un cycle de lavage rapide, ou 2&nbsp;€ pour un cycle plus long."
+    ],
+    "images": [
+      {
+        "src": "images/gordes/manuel/img-4536.jpg",
+        "alt": "La buanderie",
+        "caption": "La buanderie"
+      }
+    ]
+  }
+]
