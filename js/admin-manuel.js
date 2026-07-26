@@ -195,12 +195,24 @@ function renderSectionCard(section, index) {
       const row = document.createElement("div");
       row.className = "admin-image-row";
 
+      const thumbWrap = document.createElement("div");
+      thumbWrap.className = "admin-thumb-wrap";
       const thumb = document.createElement("img");
-      thumb.src = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${BRANCH}/${img.src}`;
+      thumb.src = `https://raw.githubusercontent.com/${REPO_OWNER}/${REPO_NAME}/${BRANCH}/${img.src}?t=${Date.now()}`;
       thumb.loading = "lazy";
       thumb.className = "admin-thumb";
       thumb.alt = "";
-      row.appendChild(thumb);
+      const missingLabel = document.createElement("span");
+      missingLabel.className = "admin-thumb-missing";
+      missingLabel.textContent = "Photo manquante";
+      missingLabel.hidden = true;
+      thumb.addEventListener("error", () => {
+        thumb.hidden = true;
+        missingLabel.hidden = false;
+      });
+      thumbWrap.appendChild(thumb);
+      thumbWrap.appendChild(missingLabel);
+      row.appendChild(thumbWrap);
 
       const fields = document.createElement("div");
       fields.className = "admin-image-fields";
@@ -216,6 +228,34 @@ function renderSectionCard(section, index) {
       altInput.addEventListener("input", () => { img.alt = altInput.value; });
       fields.appendChild(captionInput);
       fields.appendChild(altInput);
+
+      const replaceLabel = document.createElement("label");
+      replaceLabel.className = "admin-replace-btn";
+      replaceLabel.textContent = "Remplacer la photo";
+      const replaceInput = document.createElement("input");
+      replaceInput.type = "file";
+      replaceInput.accept = "image/*";
+      replaceInput.capture = "environment";
+      replaceInput.hidden = true;
+      replaceInput.addEventListener("change", async () => {
+        const file = replaceInput.files[0];
+        if (!file) return;
+        const originalLabel = replaceLabel.textContent;
+        replaceLabel.textContent = "Envoi en cours...";
+        try {
+          const path = await uploadImage(file);
+          img.src = path;
+          renderImages();
+        } catch (err) {
+          alert("Échec de l'envoi de la photo : " + err.message);
+        } finally {
+          replaceLabel.textContent = originalLabel;
+          replaceInput.value = "";
+        }
+      });
+      replaceLabel.appendChild(replaceInput);
+      fields.appendChild(replaceLabel);
+
       row.appendChild(fields);
 
       const removeBtn = document.createElement("button");
