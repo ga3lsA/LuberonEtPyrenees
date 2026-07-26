@@ -242,7 +242,7 @@ p{ margin: 0 0 1em; }
 
 /* --- Pourquoi nous --- */
 .why-grid{
-  display:grid; grid-template-columns: repeat(3,1fr); gap: 1.6rem;
+  display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.6rem;
   margin-top: 2.6rem;
 }
 .why-card{
@@ -254,7 +254,7 @@ p{ margin: 0 0 1em; }
 
 /* --- L'art de vivre (accueil) --- */
 .region-grid{
-  display:grid; grid-template-columns: 1fr 1fr; gap: 1.6rem;
+  display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.6rem;
   margin-top: 2.6rem;
 }
 .region-card img{

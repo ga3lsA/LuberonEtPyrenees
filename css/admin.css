@@ -30,6 +30,7 @@ body{ background: var(--stone-100); }
 }
 .admin-card input[type="text"],
 .admin-card input[type="password"],
+.admin-card input[type="number"],
 .admin-card textarea{
   width:100%; padding: .8em .9em; border-radius: var(--radius-s);
   border: 1px solid var(--stone-200); background: var(--stone-50);
@@ -47,12 +48,31 @@ body{ background: var(--stone-100); }
 .admin-status{ font-size:.85rem; margin-top:.7em; color: var(--ink-600); min-height: 1.2em; }
 
 .admin-house-toggle{ display:flex; gap:.8rem; }
+.admin-page-toggle{
+  display:grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap:.7rem;
+}
 .admin-house-btn{
   flex:1; padding: .9em; border-radius: var(--radius-m);
   border:1px solid var(--stone-200); background: var(--stone-50);
   font-weight:600; cursor:pointer;
 }
 .admin-house-btn.active{ border-color: var(--accent); background: var(--stone-100); color: var(--accent-dark); }
+
+.admin-subhead{
+  font-family: var(--font-display); font-size:1.05rem; margin: 1.6rem 0 .2em;
+  padding-top: 1.2rem; border-top: 1px solid var(--stone-200);
+}
+.admin-subhead:first-child{ margin-top:0; padding-top:0; border-top:none; }
+.admin-subtext{ font-size:.82rem; color: var(--ink-600); margin: 0 0 .8em; }
+
+.admin-string-row{ display:flex; gap:.5em; align-items:center; margin-bottom:.6em; }
+.admin-string-row input{ flex:1; }
+
+.admin-field-group{ margin-bottom: 1.2rem; }
+.admin-field-row{ display:grid; grid-template-columns: 1fr 1fr; gap: 0 1rem; }
+@media (max-width: 480px){
+  .admin-field-row{ grid-template-columns: 1fr; }
+}
 
 .admin-section{
   border: 1px solid var(--stone-200); border-radius: var(--radius-m);

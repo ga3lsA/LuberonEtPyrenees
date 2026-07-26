@@ -1,13 +1,18 @@
 // ==========================================================================
 // Remplit le contenu spécifique à une maison (texte, équipements, tarifs)
-// à partir de js/config.js, pour n'avoir qu'un seul endroit à modifier.
+// à partir de data/house-<maison>.json (contenu éditable, chargé par
+// fetchHouseContent() défini dans js/main.js) et de
+// SITE_CONFIG.houses[<maison>] dans js/config.js (réglages techniques du
+// moteur de réservation), pour n'avoir qu'un seul endroit à modifier de
+// chaque côté.
 // ==========================================================================
 
-function renderHousePage(houseKey) {
-  const house = SITE_CONFIG.houses[houseKey];
+async function renderHousePage(houseKey) {
+  const house = await fetchHouseContent(houseKey);
   if (!house) return;
 
-  document.documentElement.setAttribute("data-theme", house.theme);
+  const technical = SITE_CONFIG.houses[houseKey];
+  document.documentElement.setAttribute("data-theme", technical.theme);
   document.title = `${house.name} — ${house.region} | Luberon & Pyrénées`;
 
   set("[data-house-hero-img]", el => el.src = house.heroImage);
@@ -33,9 +38,11 @@ function renderHousePage(houseKey) {
   set("[data-price-low-detail]", el => el.textContent = ls.detail);
 
   const otherKey = houseKey === "gordes" ? "marquixanes" : "gordes";
-  const other = SITE_CONFIG.houses[otherKey];
-  set("[data-other-name]", el => el.textContent = other.name);
-  set("[data-other-region]", el => el.textContent = other.region);
+  const other = await fetchHouseContent(otherKey);
+  if (other) {
+    set("[data-other-name]", el => el.textContent = other.name);
+    set("[data-other-region]", el => el.textContent = other.region);
+  }
   set("[data-other-link]", el => el.href = otherKey + ".html");
 }
 

@@ -7,6 +7,12 @@ document.addEventListener("DOMContentLoaded", () => {
   initGallery();
 });
 
+async function fetchHouseContent(houseKey) {
+  const res = await fetch(`data/house-${houseKey}.json`, { cache: "no-store" });
+  if (!res.ok) return null;
+  return res.json();
+}
+
 function initNav() {
   const toggle = document.querySelector(".nav-toggle");
   const nav = document.querySelector(".main-nav");
@@ -26,12 +32,12 @@ function initNav() {
   });
 }
 
-function initGallery() {
+async function initGallery() {
   const grid = document.querySelector("[data-gallery]");
   if (!grid) return;
 
   const houseKey = grid.getAttribute("data-gallery");
-  const house = SITE_CONFIG.houses[houseKey];
+  const house = await fetchHouseContent(houseKey);
   if (!house) return;
 
   // Construit la grille de vignettes à partir de la config

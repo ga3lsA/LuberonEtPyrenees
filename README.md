@@ -22,12 +22,14 @@ réservation en plus.
    ```
    C'est l'adresse qui recevra les demandes (voir section 3).
 
-3. **Vérifier les tarifs et les disponibilités**, toujours dans
-   `js/config.js`, propriété par propriété (`gordes` et `marquixanes`) :
-   - `pricing.highSeason` / `pricing.lowSeason` : les deux tarifs affichés.
-   - `unavailable` : liste des périodes déjà réservées, au format
-     `{ start: "AAAA-MM-JJ", end: "AAAA-MM-JJ" }`. C'est la seule chose à
-     mettre à jour manuellement à chaque nouvelle réservation confirmée.
+3. **Vérifier les tarifs et les disponibilités.** Les tarifs (`pricing.highSeason` /
+   `pricing.lowSeason`) se modifient dans `data/house-gordes.json` et
+   `data/house-marquixanes.json` — ou plus simplement via le **back office**
+   (section 6). Les disponibilités bloquées manuellement (`unavailable`, au
+   format `{ start: "AAAA-MM-JJ", end: "AAAA-MM-JJ" }`) restent dans
+   `js/config.js` : c'est la seule chose à mettre à jour manuellement à
+   chaque nouvelle réservation confirmée si vous n'utilisez pas la
+   synchronisation automatique (section 4).
 
 ## 2. Structure du site
 
@@ -38,16 +40,21 @@ marquixanes.html      page maison — Marquixanes
 contact.html          page de contact
 pages/manuel-gordes.html        guide pratique Gordes (non listé dans le menu)
 pages/manuel-marquixanes.html   guide pratique Marquixanes (non listé dans le menu)
-pages/admin-manuel.html         back office des pages manuel (non listé dans le menu)
+pages/admin-manuel.html         back office du site (non listé dans le menu)
 css/style.css         design du site
 css/admin.css          design du back office
-js/config.js           contenu variable : textes, photos, tarifs, disponibilités
+js/config.js           réglages techniques du moteur de réservation (thème, saison, blocages) + e-mail de contact
 js/main.js             menu mobile, galerie photo, lightbox
-js/house-page.js       remplit une page maison à partir de config.js
+js/home-page.js         remplit la page d'accueil à partir de data/home.json
+js/house-page.js       remplit une page maison à partir de data/house-*.json
 js/manual-page.js      remplit une page "manuel de la maison" à partir de data/manuals-*.json
 js/admin-manuel.js     logique du back office (lecture/écriture via l'API GitHub)
 js/booking.js          calendrier de disponibilité + calcul de prix + formulaire
 images/                photos (à peupler avec download-images.sh) + logo
+data/home.json                  contenu éditable de la page d'accueil
+data/house-gordes.json          contenu éditable de la page Gordes (texte, équipements, galerie, tarifs)
+data/house-marquixanes.json     contenu éditable de la page Marquixanes
+data/contact.json               contenu éditable de la page contact
 data/manuals-gordes.json        sections de la page manuel Gordes
 data/manuals-marquixanes.json   sections de la page manuel Marquixanes
 data/availability.json disponibilités Airbnb/Booking, généré automatiquement
@@ -55,8 +62,13 @@ scripts/sync-availability.mjs   script de synchronisation iCal
 .github/workflows/     Action GitHub qui lance la synchronisation chaque jour
 ```
 
-Pour ajouter/retirer une photo de galerie, ou changer un texte de présentation,
-tout se passe dans `js/config.js` — vous n'avez pas besoin de toucher au HTML.
+Le contenu de chaque page (textes, photos, tarifs) vit dans un fichier
+`data/*.json` dédié. Le plus simple pour le modifier est le **back office**
+(section 6), accessible depuis un téléphone sans toucher au code ; les
+utilisateurs techniques peuvent aussi éditer ces fichiers JSON directement.
+Seuls les réglages techniques du moteur de réservation (thème de couleur,
+période de haute saison, nombre de nuits minimum, blocages manuels) restent
+dans `js/config.js`.
 
 ## 3. Le module de réservation, tel qu'il fonctionne aujourd'hui
 
@@ -192,11 +204,12 @@ contenu de ces deux pages n'est pas écrit en dur dans le HTML, il vient de
 Aucune autre modification n'est nécessaire : `js/manual-page.js` génère le
 HTML de chaque section automatiquement à partir de ce fichier JSON.
 
-## 6. Back office (éditer les manuels depuis votre téléphone, sans code)
+## 6. Back office (éditer tout le site depuis votre téléphone, sans code)
 
 Le site est 100 % statique (pas de serveur, pas de base de données), mais une
-page dédiée permet d'éditer le contenu des pages manuel directement depuis un
-navigateur — y compris sur téléphone — sans toucher à aucun fichier :
+page dédiée permet d'éditer le contenu de **toutes les pages** directement
+depuis un navigateur — y compris sur téléphone — sans toucher à aucun
+fichier :
 
 **`pages/admin-manuel.html`**
 
@@ -215,7 +228,7 @@ d'accès personnel, limité à ce seul dépôt :
 1. Sur github.com (ou l'appli GitHub), allez dans **Settings** de votre
    compte → tout en bas, **Developer settings** → **Personal access tokens**
    → **Fine-grained tokens** → **Generate new token**.
-2. Donnez-lui un nom (ex. « Back office manuels ») et une expiration (90
+2. Donnez-lui un nom (ex. « Back office site ») et une expiration (90
    jours, par exemple — vous pourrez en régénérer un le moment venu).
 3. **Repository access** → « Only select repositories » → choisissez ce
    dépôt.
@@ -235,20 +248,33 @@ réglages GitHub, sans que cela affecte le fonctionnement du site.
 ### Utilisation
 
 1. Ouvrez `pages/admin-manuel.html`, collez votre jeton, connectez-vous.
-2. Choisissez la maison (Gordes ou Marquixanes).
-3. Pour chaque section : modifiez le titre, le texte (ajoutez/retirez des
-   paragraphes), les photos (ajoutez-en depuis votre pellicule ou l'appareil
-   photo, modifiez légende/description, ou retirez-en une).
-4. Utilisez les flèches ↑ / ↓ pour réordonner les sections, ou le bouton ×
-   pour en supprimer une, ou « + Ajouter une section » pour en créer une.
+2. Choisissez la page à modifier : **Accueil**, **Gordes**, **Marquixanes**,
+   **Contact**, **Manuel Gordes** ou **Manuel Marquixanes**.
+3. Modifiez les champs affichés, propres à chaque page :
+   - **Accueil** : bandeau (titre, sous-titre, photo), cartes des deux
+     maisons, cartes « Pourquoi nous choisir » et « L'art de vivre »
+     (ajoutables, supprimables, réordonnables par flèches ↑ / ↓).
+   - **Gordes / Marquixanes** : nom, région, phrase d'intro, photo
+     principale, description (paragraphes ajoutables/supprimables),
+     équipements (liste ajoutable/supprimable), galerie photo (ajout, retrait,
+     remplacement de chaque photo), tarifs des deux saisons.
+   - **Contact** : eyebrow, titre et texte d'introduction.
+   - **Manuel Gordes / Manuel Marquixanes** : sections avec titre, texte
+     (plusieurs paragraphes) et photos, ajoutables/supprimables/réordonnables
+     — comme avant.
+4. Pour les photos : « + Ajouter une photo » ouvre le sélecteur du téléphone
+   (pellicule ou appareil photo) ; « Remplacer la photo » change le fichier
+   d'une photo déjà présente sans perdre sa légende.
 5. Cliquez sur **Enregistrer les modifications**. Le site est mis à jour
    automatiquement (une à deux minutes, le temps que GitHub Pages
    redéploie).
 
-Comme aucune photo n'avait encore été mise en ligne dans le dépôt pour ces
-pages manuel, les sections existantes n'ont pour l'instant pas d'image :
-ajoutez-les directement depuis le back office, elles s'enregistreront au
-bon endroit (`images/gordes/manuel/` ou `images/marquixanes/manuel/`).
+**Ce qui reste dans `js/config.js`, non couvert par le back office :** le
+thème de couleur de chaque maison, la période de haute saison, le nombre de
+nuits minimum hors saison, et les blocages manuels de disponibilité
+(`unavailable`). Ce sont des réglages techniques du moteur de réservation,
+distincts du contenu affiché sur les pages — ils s'éditent directement dans
+ce fichier (voir section 1).
 
 ## 7. Référencement (SEO)
 
@@ -274,8 +300,8 @@ dans : `sitemap.xml`, `robots.txt`, et l'en-tête de `index.html`,
 `luberon-et-pyrenees.fr`).
 
 **Point à connaître : une partie du texte (descriptions, équipements) est
-injectée par JavaScript** depuis `js/config.js`, plutôt qu'écrite en dur dans
-le HTML. Google sait généralement lire ce type de contenu, mais certains
+injectée par JavaScript** depuis les fichiers `data/*.json`, plutôt qu'écrite
+en dur dans le HTML. Google sait généralement lire ce type de contenu, mais certains
 outils qui n'exécutent pas le JavaScript (certains robots d'aperçu,
 notamment) ne le verront pas. Les balises meta/Open Graph couvrent
 l'essentiel de ce risque. Si vous voulez que ce texte soit aussi écrit en

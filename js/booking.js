@@ -17,8 +17,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   const root = document.querySelector("[data-booking]");
   if (!root) return;
   const houseKey = root.getAttribute("data-booking");
-  const house = SITE_CONFIG.houses[houseKey];
-  if (!house) return;
+  const technical = SITE_CONFIG.houses[houseKey];
+  const content = await fetchHouseContent(houseKey);
+  if (!technical || !content) return;
+  const house = { ...technical, ...content };
 
   const synced = await loadSyncedAvailability(houseKey);
   // Les périodes synchronisées (Airbnb/Booking) s'ajoutent à celles saisies

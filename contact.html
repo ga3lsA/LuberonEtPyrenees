@@ -47,9 +47,9 @@
 <main>
   <section class="section" style="padding-bottom:0;">
     <div class="container section-head">
-      <span class="eyebrow">Contact</span>
-      <h1>Une question, une demande particulière ?</h1>
-      <p>Pour une réservation, préférez le module dédié sur la page de chaque maison : les disponibilités et le tarif y sont calculés automatiquement. Pour toute autre question, écrivez-nous ci-dessous.</p>
+      <span class="eyebrow" data-contact-eyebrow></span>
+      <h1 data-contact-title></h1>
+      <p data-contact-text></p>
     </div>
   </section>
 
@@ -143,6 +143,15 @@
     const body = `Maison : ${data.get("house")}\nNom : ${data.get("name")}\nE-mail : ${data.get("email")}\n\nMessage :\n${data.get("message")}`;
     window.location.href = `mailto:${SITE_CONFIG.contactEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   });
+
+  fetch("data/contact.json", { cache: "no-store" })
+    .then(res => res.json())
+    .then(contact => {
+      document.querySelector("[data-contact-eyebrow]").textContent = contact.eyebrow;
+      document.querySelector("[data-contact-title]").textContent = contact.title;
+      document.querySelector("[data-contact-text]").textContent = contact.text;
+    })
+    .catch(err => console.error("Impossible de charger le contenu de la page contact :", err));
 </script>
 </body>
 </html>

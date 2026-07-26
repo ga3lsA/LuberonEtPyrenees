@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Back office — Manuels des maisons</title>
+<title>Back office — Éditer le site</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,8 +15,8 @@
 
 <div class="admin">
   <header class="admin-header">
-    <h1>Back office — Manuels des maisons</h1>
-    <p>Modifiez le contenu des pages « manuel de la maison » depuis votre téléphone : ajoutez ou supprimez des sections, changez l'ordre, ajoutez des photos. Les changements sont enregistrés directement sur GitHub et le site est mis à jour automatiquement en une à deux minutes.</p>
+    <h1>Back office — Éditer le site</h1>
+    <p>Modifiez les textes et les photos de toutes les pages du site depuis votre téléphone, ajoutez ou supprimez des sections. Les changements sont enregistrés directement sur GitHub et le site est mis à jour automatiquement en une à deux minutes.</p>
   </header>
 
   <section class="admin-card" id="token-card">
@@ -29,18 +29,21 @@
     <p class="admin-status" id="token-status"></p>
   </section>
 
-  <section class="admin-card" id="house-card" hidden>
-    <h2>2. Choisissez une maison</h2>
-    <div class="admin-house-toggle">
-      <button type="button" class="admin-house-btn" data-house="gordes">Gordes</button>
-      <button type="button" class="admin-house-btn" data-house="marquixanes">Marquixanes</button>
+  <section class="admin-card" id="page-card" hidden>
+    <h2>2. Quelle page modifier ?</h2>
+    <div class="admin-page-toggle">
+      <button type="button" class="admin-house-btn" data-page="home">Accueil</button>
+      <button type="button" class="admin-house-btn" data-page="gordes">Gordes</button>
+      <button type="button" class="admin-house-btn" data-page="marquixanes">Marquixanes</button>
+      <button type="button" class="admin-house-btn" data-page="contact">Contact</button>
+      <button type="button" class="admin-house-btn" data-page="manual-gordes">Manuel Gordes</button>
+      <button type="button" class="admin-house-btn" data-page="manual-marquixanes">Manuel Marquixanes</button>
     </div>
   </section>
 
-  <section class="admin-card" id="sections-card" hidden>
-    <h2 id="sections-title">3. Sections</h2>
-    <div id="sections-list"></div>
-    <button type="button" class="btn btn-ghost" id="add-section">+ Ajouter une section</button>
+  <section class="admin-card" id="content-card" hidden>
+    <h2 id="content-title">3. Contenu</h2>
+    <div id="content-body"></div>
     <div class="admin-save-bar">
       <button type="button" class="btn btn-primary" id="save-btn">Enregistrer les modifications</button>
       <p class="admin-status" id="save-status"></p>
