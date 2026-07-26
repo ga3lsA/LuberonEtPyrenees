@@ -235,7 +235,6 @@ function renderSectionCard(section, index) {
       const replaceInput = document.createElement("input");
       replaceInput.type = "file";
       replaceInput.accept = "image/*";
-      replaceInput.capture = "environment";
       replaceInput.hidden = true;
       replaceInput.addEventListener("change", async () => {
         const file = replaceInput.files[0];
@@ -280,7 +279,6 @@ function renderSectionCard(section, index) {
   const fileInput = document.createElement("input");
   fileInput.type = "file";
   fileInput.accept = "image/*";
-  fileInput.capture = "environment";
   fileInput.hidden = true;
   fileInput.addEventListener("change", async () => {
     const file = fileInput.files[0];
