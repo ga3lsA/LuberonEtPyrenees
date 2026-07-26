@@ -1,0 +1,63 @@
+{
+  "name": "Marquixanes",
+  "region": "Conflent, Pyrénées-Orientales",
+  "tagline": "Maison de village catalane du XVIIe, face à l'église Sainte-Eulalie, au pied du Canigou.",
+  "heroImage": "images/marquixanes/img-7942.jpeg",
+  "description": [
+    "Maison de village pleine de charme, sur 2 étages, de 80 m², typique du Pays Catalan, entièrement rénovée intérieur et extérieur, avec poutres apparentes et parquet massif dans les chambres.",
+    "Elle dispose de 3 chambres climatisées, d'une salle d'eau avec douche, de 2 toilettes et d'une pièce à vivre entièrement équipée. Elle peut accueillir jusqu'à 6 personnes, dans un confort pensé pour qu'on s'y sente vite chez soi.",
+    "Située sur la place principale du village de Marquixanes, dans le centre ancien, face à l'église Sainte-Eulalie, accessible en voiture, dans un endroit calme à proximité des commerces.",
+    "Ici, la montagne veille sur le village : le Canigou, sommet sacré des Catalans, domine le Conflent et ses vallées, offrant randonnées et panoramas à quelques minutes de la maison. Le petit train jaune, qui serpente entre Villefranche-de-Conflent et la Cerdagne, est une excursion incontournable.",
+    "Et à moins de 40 minutes de route, la Méditerranée : les plages de sable d'Argelès-sur-Mer et de Canet, ou les criques de Collioure, pour alterner journées de montagne et après-midis de farniente. Sur la route, les vignobles du Roussillon et leurs vins gourmands, du Côtes du Roussillon au Banyuls, se visitent et se dégustent volontiers."
+  ],
+  "amenities": [
+    "3 chambres climatisées (6 personnes)",
+    "80 m² sur 2 étages",
+    "Poutres apparentes",
+    "Parquet massif",
+    "Salle d'eau + douche",
+    "2 WC",
+    "Wifi fibre",
+    "Lit parapluie bébé",
+    "Chaise haute",
+    "Linge de maison fourni",
+    "Face à l'église Sainte-Eulalie",
+    "Arrivée autonome (boîte à clés)"
+  ],
+  "gallery": [
+    "images/marquixanes/img-6594-grande.jpeg",
+    "images/marquixanes/img-6771-grande.jpeg",
+    "images/marquixanes/img-5424-grande.jpeg",
+    "images/marquixanes/img-5427-grande.jpeg",
+    "images/marquixanes/img-5428-grande.jpeg",
+    "images/marquixanes/img-7629-grande.jpeg",
+    "images/marquixanes/img-7631-grande.jpeg",
+    "images/marquixanes/img-7716-grande.jpeg",
+    "images/marquixanes/img-7712-grande.jpeg",
+    "images/marquixanes/img-7732-grande.jpeg",
+    "images/marquixanes/img-7736-grande.jpeg",
+    "images/marquixanes/img-7941-grande.jpeg",
+    "images/marquixanes/img-8220-grande.jpeg",
+    "images/marquixanes/img-8221-grande.jpeg",
+    "images/marquixanes/img-8222-grande.jpeg",
+    "images/marquixanes/img-8224-grande.jpeg",
+    "images/marquixanes/img-8578-grande.jpeg",
+    "images/marquixanes/img-8577-grande.jpeg",
+    "images/marquixanes/img-8602-grande.jpeg",
+    "images/marquixanes/img-8936-grande.jpeg"
+  ],
+  "pricing": {
+    "highSeason": {
+      "label": "Juillet – Août",
+      "amount": 850,
+      "unit": "la semaine",
+      "detail": "Arrivée le samedi après 15h, départ le samedi suivant avant 10h."
+    },
+    "lowSeason": {
+      "label": "Hors saison",
+      "amount": 79,
+      "unit": "la nuit (3 nuits min.)",
+      "detail": "Arrivée possible tous les jours après 15h, départ avant 10h."
+    }
+  }
+}

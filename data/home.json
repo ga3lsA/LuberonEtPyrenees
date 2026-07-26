@@ -1,0 +1,61 @@
+{
+  "hero": {
+    "eyebrow": "Provence & Pyrénées-Orientales",
+    "title": "Locations meublées en Provence et dans les Pyrénées-Orientales",
+    "tagline": "Deux charmantes maisons proposées à la location saisonnière dans deux régions ensoleillées dans le sud de la France.",
+    "image": "images/gordes/img-4526.jpg",
+    "imageAlt": "Piscine de la maison de Gordes, dans le Luberon"
+  },
+  "diptychTitle": "Deux maisons, deux régions du Sud",
+  "houseCards": {
+    "gordes": {
+      "image": "images/gordes/img-4526-grande.jpeg",
+      "imageAlt": "Piscine de la maison de Gordes",
+      "region": "Luberon, Provence",
+      "title": "Gordes",
+      "text": "Maison en pierre sèche, piscine partagée, à 8 minutes à pied du village classé."
+    },
+    "marquixanes": {
+      "image": "images/marquixanes/img-8936-grande.jpeg",
+      "imageAlt": "Salon de la maison de Marquixanes",
+      "region": "Conflent, Pyrénées-Orientales",
+      "title": "Marquixanes",
+      "text": "Maison de village catalane rénovée, face à l'église, au pied du Canigou."
+    }
+  },
+  "whyEyebrow": "Deux régions, un même art de recevoir",
+  "whyTitle": "Réserver directement, sans commission de plateforme",
+  "whyText": "Airbnb et Booking prélèvent entre 15 et 20 % de commission qui s'ajoutent au tarif de la location. En réservant directement auprès de nous, ce coût disparaît — et le contact reste simple et personnel, du premier échange jusqu'aux clés remises dans leur boîte sécurisée.",
+  "whyCards": [
+    {
+      "title": "Réservation directe",
+      "text": "Un calendrier de disponibilité en temps réel et une demande envoyée en un clic, sans commission ajoutée au tarif affiché."
+    },
+    {
+      "title": "Arrivée autonome",
+      "text": "Les clés se trouvent dans une boîte à clés dont le code vous est communiqué à la réservation : arrivez à votre rythme."
+    },
+    {
+      "title": "Un confort pensé pour se sentir chez soi",
+      "text": "Maisons climatisées et entièrement équipées : on pose ses valises, et le séjour commence tout de suite, sans rien à ajouter."
+    }
+  ],
+  "artEyebrow": "L'art de vivre du Sud",
+  "artTitle": "Deux régions, deux façons de ralentir",
+  "artCards": [
+    {
+      "image": "images/gordes/img-4536-grande.jpeg",
+      "imageAlt": "Ambiance provençale à Gordes, dans le Luberon",
+      "tag": "Luberon, Provence",
+      "title": "La douceur de vivre provençale",
+      "text": "Ici, les journées se rythment aux volets qui claquent contre la pierre chaude et à l'odeur de lavande portée par le vent. Le mardi matin, direction le marché de Gordes ; le dimanche, celui, plus grand encore, de L'Isle-sur-la-Sorgue. Les moulins du Luberon ouvrent leurs portes pour des dégustations d'huile d'olive, et les domaines des Côtes du Luberon invitent à un verre de rosé face aux vignes, en fin de journée."
+    },
+    {
+      "image": "images/marquixanes/img-8602-grande.jpeg",
+      "imageAlt": "Vue sur le Canigou depuis les Pyrénées-Orientales",
+      "tag": "Conflent, Pyrénées-Orientales",
+      "title": "Entre montagne et Méditerranée",
+      "text": "Le Canigou, sommet sacré des Catalans, veille sur le village et ses vallées, idéal pour les amateurs de randonnée. À moins de 40 minutes de route, la Méditerranée déroule les plages de sable d'Argelès-sur-Mer et les criques de Collioure. Entre les deux, les vignobles du Roussillon se visitent et se dégustent, du Côtes du Roussillon au Banyuls."
+    }
+  ]
+}
