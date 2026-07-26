@@ -42,6 +42,7 @@ css/style.css         design du site
 js/config.js           TOUT le contenu variable : textes, photos, tarifs, disponibilités
 js/main.js             menu mobile, galerie photo, lightbox
 js/house-page.js       remplit une page maison à partir de config.js
+js/manual-page.js      remplit une page "manuel de la maison" à partir de config.js
 js/booking.js          calendrier de disponibilité + calcul de prix + formulaire
 images/                photos (à peupler avec download-images.sh) + logo
 data/availability.json disponibilités Airbnb/Booking, généré automatiquement
@@ -149,6 +150,38 @@ maison (électricité, chauffage, TV, coffre-fort...). Envoyez le lien
 correspondant à vos voyageurs avant leur arrivée (par exemple dans l'e-mail
 de confirmation). Une fois le site en ligne, les adresses seront de la forme
 `https://votre-domaine/pages/manuel-gordes.html`.
+
+### Ajouter, modifier ou réordonner une section
+
+Le contenu de ces deux pages n'est pas écrit en dur dans le HTML : il vient
+de `js/config.js`, propriété `manuals.gordes` et `manuals.marquixanes`. Ce
+sont des listes de sections, chacune de la forme :
+
+```js
+{
+  title: "Titre de la section",
+  paragraphs: [
+    "Premier paragraphe.",
+    "Deuxième paragraphe, si besoin."
+  ],
+  images: [
+    { src: "images/gordes/manuel/mon-fichier.jpg", alt: "Description de l'image", caption: "Légende affichée sous la photo" }
+  ]
+}
+```
+
+- **Ajouter une section** : copiez un bloc `{ title, paragraphs, images }`
+  existant, collez-le où vous voulez dans la liste, et changez son contenu.
+  Une section sans photo peut simplement omettre `images` (ou mettre `[]`).
+- **Réordonner les sections** : la page affiche les sections dans l'ordre où
+  elles apparaissent dans la liste. Pour changer l'ordre, déplacez le bloc
+  `{ ... }` correspondant à un autre endroit de la liste (couper/coller).
+- **Photos** : déposez les fichiers dans `images/gordes/manuel/` (ou
+  `images/marquixanes/manuel/`), puis référencez-les dans `src` avec ce même
+  chemin, sans `../` devant (comme partout ailleurs dans `config.js`).
+
+Aucune autre modification n'est nécessaire : `js/manual-page.js` génère le
+HTML de chaque section automatiquement à partir de cette liste.
 
 ## 7. Référencement (SEO)
 
