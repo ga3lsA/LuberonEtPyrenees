@@ -420,24 +420,24 @@ p{ margin: 0 0 1em; }
 }
 .form-group{ display:flex; flex-direction:column; margin-bottom: 1.3em; }
 .form-group.full{ grid-column: 1 / -1; }
-.booking-form label{
+[data-booking-form] label{
   display:block; font-size:.72rem; font-weight:600; text-transform:uppercase;
   letter-spacing:.07em; margin-bottom: .6em; color: rgba(243,236,223,.55);
 }
-.booking-form input, .booking-form textarea{
+[data-booking-form] input, [data-booking-form] textarea{
   width:100%; padding: .95em 1.05em; border-radius: var(--radius-m);
   border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.05);
   color:#fff; font-family: var(--font-body); font-size: .95rem;
   transition: border-color .2s ease, background-color .2s ease, box-shadow .2s ease;
 }
-.booking-form input::placeholder, .booking-form textarea::placeholder{ color: rgba(243,236,223,.4); }
-.booking-form input:hover, .booking-form textarea:hover{ border-color: rgba(255,255,255,.24); }
-.booking-form input:focus, .booking-form textarea:focus{
+[data-booking-form] input::placeholder, [data-booking-form] textarea::placeholder{ color: rgba(243,236,223,.4); }
+[data-booking-form] input:hover, [data-booking-form] textarea:hover{ border-color: rgba(255,255,255,.24); }
+[data-booking-form] input:focus, [data-booking-form] textarea:focus{
   outline: none; border-color: var(--accent); background: rgba(255,255,255,.08);
   box-shadow: 0 0 0 3px rgba(255,255,255,.06);
 }
-.booking-form textarea{ min-height: 120px; resize:vertical; }
-.booking-form .btn-primary{
+[data-booking-form] textarea{ min-height: 120px; resize:vertical; }
+[data-booking-form] .btn-primary{
   margin-top: .8em; width:100%; justify-content:center;
   padding: 1.05em 1.6em; font-size: 1rem;
 }
