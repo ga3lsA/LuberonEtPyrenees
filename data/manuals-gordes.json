@@ -6,17 +6,17 @@
     ],
     "images": [
       {
-        "src": "images/gordes/manuel/img-9145-moyenne.jpeg",
+        "src": "images/gordes/manuel/1785077431484-img-0612.png",
         "alt": "L'extincteur situé dans la cuisine sous l'évier",
         "caption": "L'extincteur, sous l'évier de la cuisine"
       },
       {
-        "src": "images/gordes/manuel/img-9144-moyenne.jpeg",
+        "src": "images/gordes/manuel/1785077449327-img-0613.png",
         "alt": "Détecteur de monoxyde de carbone",
         "caption": "Détecteur de fumée / monoxyde"
       },
       {
-        "src": "images/gordes/manuel/img-9146-moyenne.jpeg",
+        "src": "images/gordes/manuel/1785077463664-img-0614.png",
         "alt": "Trousse de premiers secours",
         "caption": "Trousse de premiers secours"
       }
@@ -30,22 +30,22 @@
     ],
     "images": [
       {
-        "src": "images/gordes/manuel/img-9147-moyenne.jpeg",
+        "src": "images/gordes/manuel/1785077481394-img-0615.png",
         "alt": "Le coffret électrique derrière la porte",
         "caption": "Le coffret électrique, derrière la porte"
       },
       {
-        "src": "images/gordes/manuel/img-9160.jpeg",
+        "src": "images/gordes/manuel/1785077495175-img-0616.png",
         "alt": "Le Bastidon N°14",
         "caption": "Le Bastidon n°14"
       },
       {
-        "src": "images/gordes/manuel/img-9161.jpeg",
+        "src": "images/gordes/manuel/1785077506820-img-0617.png",
         "alt": "Le boîtier électrique sur le mur",
         "caption": "Le boîtier électrique, sur le mur"
       },
       {
-        "src": "images/gordes/manuel/img-9162.jpeg",
+        "src": "images/gordes/manuel/1785077516640-img-0618.png",
         "alt": "Enclenchez le disjoncteur N°5",
         "caption": "Réenclenchez le n°5 en cas de disjonction"
       }
@@ -60,7 +60,7 @@
     ],
     "images": [
       {
-        "src": "images/gordes/manuel/img-9149-moyenne.jpeg",
+        "src": "images/gordes/manuel/1785077532178-img-0619.png",
         "alt": "Télécommandes",
         "caption": "Les télécommandes"
       }
@@ -74,12 +74,12 @@
     ],
     "images": [
       {
-        "src": "images/gordes/manuel/img-8987-grande.jpeg",
+        "src": "images/gordes/manuel/1785077547826-img-0620.png",
         "alt": "Le clavier du coffre",
         "caption": "Le clavier du coffre"
       },
       {
-        "src": "images/gordes/manuel/img-8988-grande.jpeg",
+        "src": "images/gordes/manuel/1785077557454-img-0621.png",
         "alt": "Le bouton rouge du coffre",
         "caption": "Le bouton rouge, à l'arrière de la porte"
       }
@@ -92,7 +92,7 @@
     ],
     "images": [
       {
-        "src": "images/gordes/manuel/img-9148-moyenne.jpeg",
+        "src": "images/gordes/manuel/1785077574055-img-0622.png",
         "alt": "Plaque de cuisson",
         "caption": "La plaque de cuisson"
       }
@@ -105,7 +105,7 @@
     ],
     "images": [
       {
-        "src": "images/gordes/manuel/img-9150-moyenne.jpeg",
+        "src": "images/gordes/manuel/1785077593670-img-0624.png",
         "alt": "Rallonges électriques",
         "caption": "Rallonges et adaptateurs"
       }
@@ -121,6 +121,11 @@
         "src": "images/gordes/manuel/img-9154-moyenne.jpeg",
         "alt": "Prise électrique et USB-C",
         "caption": "Prise avec USB-C intégré"
+      },
+      {
+        "src": "images/gordes/manuel/1785077612155-img-0625.png",
+        "alt": "",
+        "caption": ""
       }
     ]
   },
