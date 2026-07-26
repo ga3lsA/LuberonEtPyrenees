@@ -18,6 +18,12 @@ function initNav() {
   nav.querySelectorAll("a").forEach(a =>
     a.addEventListener("click", () => nav.classList.remove("open"))
   );
+  document.addEventListener("click", (e) => {
+    if (nav.classList.contains("open") && !nav.contains(e.target) && !toggle.contains(e.target)) {
+      nav.classList.remove("open");
+      toggle.setAttribute("aria-expanded", "false");
+    }
+  });
 }
 
 function initGallery() {
