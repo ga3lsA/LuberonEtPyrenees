@@ -9,14 +9,14 @@
   "diptychTitle": "Deux maisons, deux régions du Sud",
   "houseCards": {
     "gordes": {
-      "image": "images/gordes/img-4526-grande.jpeg",
+      "image": "images/site/1785084127202-img-4520.jpeg",
       "imageAlt": "Piscine de la maison de Gordes",
       "region": "Luberon, Provence",
       "title": "Gordes",
       "text": "Maison en pierre sèche, piscine partagée, à 8 minutes à pied du village classé."
     },
     "marquixanes": {
-      "image": "images/marquixanes/img-8936-grande.jpeg",
+      "image": "images/site/1785084154617-img-8578.jpeg",
       "imageAlt": "Salon de la maison de Marquixanes",
       "region": "Conflent, Pyrénées-Orientales",
       "title": "Marquixanes",
@@ -44,14 +44,14 @@
   "artTitle": "Deux régions, deux façons de ralentir",
   "artCards": [
     {
-      "image": "images/gordes/img-4536-grande.jpeg",
+      "image": "images/site/1785084212111-img-2297.jpeg",
       "imageAlt": "Ambiance provençale à Gordes, dans le Luberon",
       "tag": "Luberon, Provence",
       "title": "La douceur de vivre provençale",
       "text": "Ici, les journées se rythment aux volets qui claquent contre la pierre chaude et à l'odeur de lavande portée par le vent. Le mardi matin, direction le marché de Gordes ; le dimanche, celui, plus grand encore, de L'Isle-sur-la-Sorgue. Les moulins du Luberon ouvrent leurs portes pour des dégustations d'huile d'olive, et les domaines des Côtes du Luberon invitent à un verre de rosé face aux vignes, en fin de journée."
     },
     {
-      "image": "images/marquixanes/img-8602-grande.jpeg",
+      "image": "images/site/1785084248341-img-7732.jpeg",
       "imageAlt": "Vue sur le Canigou depuis les Pyrénées-Orientales",
       "tag": "Conflent, Pyrénées-Orientales",
       "title": "Entre montagne et Méditerranée",
