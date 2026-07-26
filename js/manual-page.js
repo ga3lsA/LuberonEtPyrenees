@@ -1,16 +1,23 @@
 // ==========================================================================
 // Remplit une page "manuel de la maison" à partir des sections définies dans
-// js/config.js (SITE_CONFIG.manuals.<maison>), pour n'avoir qu'un seul
-// endroit à modifier : ajouter ou réordonner les sections se fait dans le
-// tableau de config.js, pas dans ce fichier.
+// data/manuals-<maison>.json, pour n'avoir qu'un seul endroit à modifier :
+// ajouter ou réordonner les sections se fait dans ce fichier JSON, pas ici.
+// Le back office (pages/admin-manuel.html) écrit directement dans ces mêmes
+// fichiers JSON via l'API GitHub.
 // ==========================================================================
 
-function renderManualPage(houseKey) {
-  const sections = SITE_CONFIG.manuals && SITE_CONFIG.manuals[houseKey];
+async function renderManualPage(houseKey) {
   const wrap = document.querySelector("[data-manual-blocks]");
-  if (!sections || !wrap) return;
+  if (!wrap) return;
 
-  wrap.innerHTML = sections.map(renderManualBlock).join("");
+  try {
+    const res = await fetch(`../data/manuals-${houseKey}.json`, { cache: "no-store" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const sections = await res.json();
+    wrap.innerHTML = sections.map(renderManualBlock).join("");
+  } catch (err) {
+    console.error("Impossible de charger le manuel de la maison :", err);
+  }
 }
 
 function renderManualBlock(block) {

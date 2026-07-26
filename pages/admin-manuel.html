@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Back office — Manuels des maisons</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+<div class="admin">
+  <header class="admin-header">
+    <h1>Back office — Manuels des maisons</h1>
+    <p>Modifiez le contenu des pages « manuel de la maison » depuis votre téléphone : ajoutez ou supprimez des sections, changez l'ordre, ajoutez des photos. Les changements sont enregistrés directement sur GitHub et le site est mis à jour automatiquement en une à deux minutes.</p>
+  </header>
+
+  <section class="admin-card" id="token-card">
+    <h2>1. Connexion</h2>
+    <p>Collez votre jeton d'accès personnel GitHub (créé une fois, voir le README « Back office »). Il n'est enregistré que sur cet appareil, jamais envoyé ailleurs qu'à GitHub.</p>
+    <label for="token-input">Jeton d'accès personnel</label>
+    <input type="password" id="token-input" placeholder="github_pat_..." autocomplete="off" autocapitalize="off" spellcheck="false">
+    <label class="admin-checkbox"><input type="checkbox" id="token-remember" checked> Se souvenir de moi sur cet appareil</label>
+    <button type="button" class="btn btn-primary" id="token-connect">Se connecter</button>
+    <p class="admin-status" id="token-status"></p>
+  </section>
+
+  <section class="admin-card" id="house-card" hidden>
+    <h2>2. Choisissez une maison</h2>
+    <div class="admin-house-toggle">
+      <button type="button" class="admin-house-btn" data-house="gordes">Gordes</button>
+      <button type="button" class="admin-house-btn" data-house="marquixanes">Marquixanes</button>
+    </div>
+  </section>
+
+  <section class="admin-card" id="sections-card" hidden>
+    <h2 id="sections-title">3. Sections</h2>
+    <div id="sections-list"></div>
+    <button type="button" class="btn btn-ghost" id="add-section">+ Ajouter une section</button>
+    <div class="admin-save-bar">
+      <button type="button" class="btn btn-primary" id="save-btn">Enregistrer les modifications</button>
+      <p class="admin-status" id="save-status"></p>
+    </div>
+  </section>
+</div>
+
+<script src="../js/admin-manuel.js"></script>
+</body>
+</html>
