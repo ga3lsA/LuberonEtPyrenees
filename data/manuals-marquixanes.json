@@ -169,5 +169,18 @@
         "caption": "Télécommande de la Livebox"
       }
     ]
+  },
+  {
+    "title": "Coffre-fort",
+    "paragraphs": [
+      "Un coffre fort est à votre disposition. Pour l’utiliser : appuyez sur le bouton rouge à l’arrière de la porte. Vous entendrez 2 bips. Saisissez votre code à 4 chiffres suivi de « E ». Fermez la porte. Pour ouvrir, saisissez votre code suivi de « E ». En cas de souci, une clef permet de l’ouvrir. "
+    ],
+    "images": [
+      {
+        "src": "images/marquixanes/manuel/1785774048851-img-0797.jpeg",
+        "alt": "",
+        "caption": ""
+      }
+    ]
   }
 ]
