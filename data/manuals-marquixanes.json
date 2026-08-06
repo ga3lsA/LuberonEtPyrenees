@@ -13,8 +13,8 @@
       },
       {
         "src": "images/marquixanes/manuel/1785768616015-img-0787.jpeg",
-        "alt": "",
-        "caption": ""
+        "alt": "Dans le tiroir de la salle de bains",
+        "caption": "La trousse de 1ers secours"
       }
     ]
   },
@@ -26,8 +26,8 @@
     "images": [
       {
         "src": "images/marquixanes/manuel/1785768793086-img-0789.jpeg",
-        "alt": "Le clocher de Marquixanes",
-        "caption": "Le clocher, repère depuis la place"
+        "alt": "La place de l'Eglise devant la maison",
+        "caption": "Des places de stationnement gratuites devant la maison"
       }
     ]
   },
@@ -55,7 +55,7 @@
     "images": [
       {
         "src": "images/marquixanes/manuel/1785078417246-img-0639.png",
-        "alt": "La chaudière",
+        "alt": "Dans le placard du salon",
         "caption": "La chaudière"
       },
       {
@@ -65,7 +65,7 @@
       },
       {
         "src": "images/marquixanes/manuel/1785078438501-img-0641.png",
-        "alt": "Trappe des robinets de chauffage",
+        "alt": "Située derrière la télé",
         "caption": "La trappe des robinets"
       },
       {
@@ -94,8 +94,8 @@
       },
       {
         "src": "images/marquixanes/manuel/1785769015889-img-0794.jpeg",
-        "alt": "",
-        "caption": ""
+        "alt": "Dans le tableau éléectrique",
+        "caption": "Le contacteur du ballon d'eau chaude"
       }
     ]
   },
@@ -128,7 +128,7 @@
   {
     "title": "Étage",
     "paragraphs": [
-      "Déchaussez-vous avant de monter dans les étages."
+      "Déchaussez-vous svp avant de monter dans les étages."
     ],
     "images": [
       {
@@ -173,7 +173,8 @@
   {
     "title": "Coffre-fort",
     "paragraphs": [
-      "Un coffre fort est à votre disposition. Pour l’utiliser : appuyez sur le bouton rouge à l’arrière de la porte. Vous entendrez 2 bips. Saisissez votre code à 4 chiffres suivi de « E ». Fermez la porte. Pour ouvrir, saisissez votre code suivi de « E ». En cas de souci, une clef permet de l’ouvrir. "
+      "Un coffre fort est à votre disposition. Pour l’utiliser : appuyez sur le bouton rouge à l’arrière de la porte. Vous entendrez 2 bips. Saisissez votre code à 4 chiffres suivi de « E ». Fermez la porte. Pour ouvrir, saisissez votre code suivi de « E ». En cas de souci, une clef permet de l’ouvrir. Si les voyants rouge s'allument, c'est que les piles sont usées. Vous pouvez les changer, des piles sont disponibles dans le meuble tv",
+      "Une clé de sécurité est disponible dans le salon en cas de blocage du coffre."
     ],
     "images": [
       {
